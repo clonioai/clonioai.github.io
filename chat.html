@@ -1,0 +1,144 @@
+<!-- templates/chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clonio AI Chat</title>
+    <link rel="icon" href="/static/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium%20Web&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            background-color: #f4f4f4;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 72vh;
+        }
+        #chatbox {
+            width: 60%;
+            height: 60%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: white;
+            overflow-y: scroll;
+        }
+        #inputSection {
+            display: flex;
+            width: 60%;
+            margin-top: 10px;
+        }
+        #userMessage {
+            width: 100%;
+            padding: 10px;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .typing {
+            font-style: italic;
+            color: gray;
+        }
+        header {
+	    background: #f4f4f4;
+	    color: #333;
+	    padding: 10px 0;
+	    text-align: center;
+	}
+
+	nav ul {
+	    list-style-type: none;
+	    padding: 0;
+	}
+
+	nav h1 {
+	    font-size: 32px;
+	}
+
+	nav ul li {
+	    display: inline-block;
+	    margin-right: 20px;
+	}
+
+	nav ul li a {
+	    color: #333;
+	    text-decoration: none;
+	}
+
+	nav a:hover {
+	    color: #3338;
+	}
+	nav {
+	    background: #f4f4f4;
+	    color: #333;
+	    padding: 5px 0; /* Adjusted padding */
+	    text-align: center;
+	    display: flex; /* Added flex display */
+	    align-items: center; /* Center vertically */
+	    justify-content: space-between; /* Space between logo and links */
+	}
+
+	nav img {
+	    filter: invert(4.31%);
+	    width: 6em; /* Adjusted width */
+	    margin-left: 10px; /* Added margin for spacing */
+	}
+
+    </style>
+</head>
+<body>
+    <header>
+    <nav>
+    <a href="/"><img src="/static/clonio.jpeg"></a>
+    <ul>
+    <li><a href="/">Go home</a></li>
+    </ul>
+    </nav>
+    </header>
+    <main>
+    <div id="chatbox"></div>
+    <div id="inputSection">
+        <input type="text" id="userMessage" placeholder="Type your message here...">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+            $(document).ready(function() {
+                const userName = localStorage.getItem('userName');
+                const otherName = localStorage.getItem('otherName');
+                const code = localStorage.getItem('code');
+
+                function sendMessage() {
+                    const userMessage = $('#userMessage').val();
+                    if (userMessage.trim() !== "") {
+                        $('#chatbox').append(`<div class="message"><strong>${userName}:</strong> ${userMessage}</div>`);
+                        $('#chatbox').append('<div class="message typing">Clonio AI is typing...</div>');
+
+                        $.post('https://clonioai.pythonanywhere.com/send_message', { user_message: userMessage, user_name: userName, other_name: otherName, code: code }, function(data) {
+                            $('.typing').remove();
+                            $('#chatbox').append(`<div class="message"><strong>${otherName}:</strong> ${data.response}</div>`);
+                            // Scroll to the bottom of the chatbox
+                            $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+                        });
+
+                        $('#userMessage').val('');
+                    }
+                }
+
+                $('#userMessage').on('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        // Scroll to the bottom of the chatbox
+                        $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+                        sendMessage();
+                    }
+                });
+            });
+        </script>
+    </main>
+</body>
+</html>
+
