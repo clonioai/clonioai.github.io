@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clonio AI - Turn Anyone Into an AI Chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium%20Web&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+<style>
+body {
+    font-family: 'Titillium Web', sans-serif;
+    background: #fff;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 44px;
+}
+
+::selection {
+    background: #333;
+    color: #fff;
+}
+
+footer ::selection {
+    background: #fff;
+    color: #333;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav h1 {
+    font-size: 32px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ff88;
+}
+
+.main {
+    height: 100vh;
+    justify-content: center;
+    background: url('wave-animation.gif') repeat;
+}
+
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #333;
+    color: #fff;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-bottom {
+    background: #111;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #fff;
+  background-color: #000;
+  transform: translateY(8px);
+}
+
+.btn:active {
+  transform: translateY(12px);
+}
+
+.marker {
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    padding: 0 5px;
+    color: black;
+}
+
+.marker::after {
+    content: "";
+    position: absolute;
+    bottom: -2px; /* Adjust this value if needed */
+    left: 0;
+    width: 100%;
+    height: 3px; /* Adjust thickness */
+    background-image: linear-gradient(to top right, transparent 49%, black 50%, black 51%, transparent 51%);
+    background-size: 6px 6px; /* Adjust for the diagonal pattern */
+}
+
+
+.banner {
+    background-color: #ff69b4; /* Pink color */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .banner p {
+    margin: 0;
+  }
+
+  .close-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 20px;
+  }
+
+  .close-btn:hover {
+    opacity: 0.8;
+  }
+
+</style>
+</head>
+<body>
+<div class="banner">
+  <p>Starting at only $1.99 USD or $2.99 CAD monthly for orders before June 16.</p>
+  <button class="close-btn">×</button>
+</div>
+    <header>
+        <nav>
+            <img style="filter: invert(80%); width: 10em" src="clonio.jpeg">
+            <ul>
+                <li><a href="/mission">Mission</a></li>
+                <li><a href="/purchase">Buy Clonio</a></li>
+                <li><a href="/try">Try It</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section style="margin-left: 10px" class="main">
+        <div class="content">
+            <p style="font-size: 24px">At Clonio AI, we specialize in simulating conversations with specific individuals to predict outcomes and provide guidance. Whether you're preparing to ask your boss for a raise, planning to ask your crush out, or getting ready for a job interview, Clonio AI can help. By training Clonio AI on your conversations, we can simulate these interactions and provide insights into how they might respond, helping you make more informed decisions and increase your chances of success.</p>
+            <a style="font-size: 26px; margin-left: 12px" class="btn" href="/try">Try Clonio AI for Free →</a><br><br>
+            <a style="font-size: 26px; margin-left: 12px" class="btn" href="/try">Pre-Order for $1.99/month →</a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Clonio AI. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+    const roles = [
+    'sibling', 'boss', 'crush', 'colleague', 'mentor', 'student', 'teacher', 
+    'mom', 'grandpa', 'child', 'spouse', 'partner', 'cousin', 'uncle', 'niece', 
+    'in-law', 'roommate', 'neighbor', 'classmate', 'teammate', 
+    'therapist', 'doctor', 'client', 'coach', 'business partner', 'landlord', 
+    'tenant', 'customer', 'vendor', 'service provider', 'tutor', 'personal trainer', 
+    'project manager', 'supervisor', 'intern', 'nanny', 'caretaker', 'barista', 
+    'barber', 'stylist', 'chef', 'waiter', 'receptionist', 'security guard', 
+    'delivery person', 'technician', 'repair person', 'advisor', 'counselor', 
+    'lawyer', 'accountant', 'friend'
+];
+
+
+
+let index = 0;
+
+function changeRole() {
+    document.getElementById('role').textContent = roles[index];
+    index = (index + 1) % roles.length;
+}
+
+setInterval(changeRole, 1200);
+
+</script>
+</body>
+</html>
+
