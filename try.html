@@ -78,36 +78,6 @@
     </style>
 </head>
 <body>
-    <form id="startForm">
-        <div id="logo" style="text-align: center">
-        <a href="/"><img style="filter:invert(4.31%);width: 10em" src="clonio.jpeg"></a>
-        </div>
-        <p>Turn anyone into an AI chatbot. <a href="/purchase">Unlimited access starting at just 4 dollars a month</a>.</p>
-        <input type="text" id="userName" name="user_name" placeholder="Your Name" required>
-        <input type="text" id="otherName" name="other_name" placeholder="Other Person's Name" required>
-        <textarea id="convo" name="convo" placeholder="Previous Conversation" rows="4" required></textarea>
-        <button class="btn" type="submit">Start Conversation</button>
-        <p>Starting a conversation signifies that you agree to our <a href="/terms">Terms of Use</a> and that you have read and understand our <a href="/privacy">Privacy Policy</a>. Don't worry, your details <b>will not</b> be saved or sold by us and will only be shared with API providers.</p>
-    </form>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#startForm').on('submit', function(event) {
-                event.preventDefault();
-                const userName = $('#userName').val();
-                const otherName = $('#otherName').val();
-                const convo = $('#convo').val();
-
-                $.post('https://clonioai.pythonanywhere.com/start_conversation', { user_name: userName, other_name: otherName, convo: convo }, function(data) {
-                    const code = data.code;
-                    localStorage.setItem('userName', userName);
-                    localStorage.setItem('otherName', otherName);
-                    localStorage.setItem('code', code);
-                    window.location.href = '/chat';
-                });
-            });
-        });
-    </script>
+    <a href="https://apps.apple.com/us/app/clonio-ai/id6633411608">Download Clonio AI</a>
 </body>
 </html>
